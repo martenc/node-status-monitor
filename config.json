@@ -1,0 +1,64 @@
+{
+  "title": "Availability Monitor",
+  "hostname": "0.0.0.0",
+  "port": 8080,
+  "client": {
+    "transports": []
+  },
+  "services": [
+    {
+      "name": "Sundance.org", 
+      "label": "Sundance.org",
+      "check": "http",
+      "host": "www.sundance.org", 
+      "port": 80,
+      "path": "/"
+    },
+    {
+      "name": "google.com", 
+      "label": "Google",
+      "check": "http",
+      "host": "www.google.com", 
+      "port": 80,
+      "path": "/"
+    }
+  ],
+  "plugins" : {
+    "console" : {
+      "enable": false
+    },
+    "irc" : {
+      "enable": false,
+      "server": "irc.freenode.net",
+      "nick": "mystatusdashboardsample",
+      "options": {
+        "debug": false,
+        "channels": ["#mystatusdashboardsample"]
+      }
+    },
+    "heartbeat": {
+      "enable": true,
+      "period": 20000
+    },
+    
+    "mail": {
+        "enable": false,
+        "sender": "your@email.com",
+        "to": "your@email.com",
+        "subject": "[statusdashboard]: Alert",
+        "options": {
+          "nodemailer": {
+            "host": "smtp.gmail.com",
+            "port": 465,
+            "use_authentication": true,
+            "ssl": true,
+            "user": "your@email.com",
+            "pass": "password",
+            "debug": false
+          }
+        }
+      }
+  },
+  "serviceInterval": 25000,
+  "serviceDelay": 2000
+}
