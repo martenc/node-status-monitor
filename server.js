@@ -15,7 +15,7 @@ var settings = JSON.parse(input);
 settings.port = process.env.PORT || settings.port;
 
 process.on('exit', function () {
-  util.log('Bye bye Statusdashboard.');
+  util.log('bye');
 });
 
 process.on('uncaughtException', function(err) {
